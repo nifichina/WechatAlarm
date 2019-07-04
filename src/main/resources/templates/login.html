@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>微信预警</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /*去掉页面样式，通用选择器*/
+    body {
+      color: white;
+      background: #CCCCCC;
+    }
+
+    /*标签选择器*/
+    .context {
+      background: #50A3A2;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 400px;
+      margin-top: -200px;
+      overflow: hidden; /*隐藏滚动条*/
+    }
+
+    /*定位浏览器边距位置 左 上 */
+    .container { /*类选择器*/
+      max-width: 600px;
+      height: 400px; /*左右*/
+      padding: 80px 0; /*上下*/
+      margin: 0 auto; /*居中显示*/
+      text-align: center;
+    }
+
+    .container h1 { /*派生*/
+      font-size: 40px;
+      font-weight: 300;
+    }
+
+    .login {
+      background: gray;
+      padding: 10px 15px;
+      border-radius: 28px;
+      width: 250px;
+      font-size: 26px;
+      margin: 150px auto;
+    }
+
+    .login:hover {
+      background: #CCC; /*鼠标移动上去按钮颜色变灰色*/
+    }
+
+    .login_link {
+      color: black;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<div class="context">
+  <div class="container">
+    <h1>微信预警服务</h1>
+    <div class="login">
+      <a class="login_link" th:each="oAuthService:${oAuthServices}" th:href="@{${oAuthService.authorizationUrl}}" href="#"
+         text="GitHub登陆">GitHub一键登陆</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

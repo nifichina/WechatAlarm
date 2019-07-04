@@ -1,0 +1,45 @@
+
+server:
+  port: 80
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://:3306/wechatalarm?serverTimezone=UTC
+    username: 用户名
+    password: 密码
+
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto:  update
+        dialect:  org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+
+  thymeleaf:
+    cache: false
+
+logging:
+  path: /var/wechatAlarm/log
+  level:
+    com.alarm.wechat: DEBUG
+    org.springframework.web: INFO
+    org.hibernate:  ERROR
+
+oAuth:
+  github:
+    state: 随机字符串
+    clientId:  github oauth app 的  clientId
+    clientSecret: github oauth app 的  clientSecret
+
+demo.host:  http://  指向本地IP:80的域名
+
+wechat:
+  config:
+    templateId: 模板ID
+    appid: 微信APPID
+    appsecret: 微信appsecret
+    token: 微信token
+    accessTokenUrl: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+
