@@ -81,8 +81,8 @@ public class SendMsgController {
   public String postMsg(@RequestParam(value = "desp") String msg, HttpServletRequest request,
       Model model) throws Exception {
     User user = (User) request.getSession().getAttribute("user");
-    SendUrl sendUrl = sendUrlRepository.findByUser(user);
-    sendMsgService.sendMsg(sendUrl.getParam(), msg);
+    SendUrl sendUrl = sendUrlRepository.findByOauthId(user.getOauthId());
+    sendMsgService.sendMsg(sendUrl.getOauthId(), msg);
     model.addAttribute("sendUrl", sendUrl.getUrl());
     return "send";
   }

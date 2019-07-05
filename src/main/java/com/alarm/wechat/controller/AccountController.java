@@ -79,7 +79,7 @@ public class AccountController {
   @RequestMapping(value = "/redirectSend", method = RequestMethod.GET)
   public String redirectSend(HttpServletRequest request, Model model) {
     User user = (User) request.getSession().getAttribute("user");
-    SendUrl sendUrl = sendUrlRepository.findByUser(user);
+    SendUrl sendUrl = sendUrlRepository.findByOauthId(user.getOauthId());
     if (null == sendUrl) {
       model.addAttribute("flag", "false");
       return "index";
@@ -90,7 +90,7 @@ public class AccountController {
   }
 
   private String getReturnString(Model model, User user) {
-    SendUrl sendUrl = sendUrlRepository.findByUser(user);
+    SendUrl sendUrl = sendUrlRepository.findByOauthId(user.getOauthId());
     if (null == sendUrl) {
       try {
         model.addAttribute("ticketUrl", weChatTicketService.getQrcode(user.getId().toString()));

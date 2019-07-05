@@ -26,7 +26,7 @@ import org.dom4j.io.SAXReader;
  */
 public class MessageUtil {
   /**
-   * 新建方法，将接收到的XML格式，转化为Map对象
+   * 将接收到的XML格式，转化为Map对象
    * @param request 将request对象，通过参数传入
    * @return 返回转换后的Map对象
    */

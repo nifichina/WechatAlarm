@@ -32,18 +32,18 @@ public class SendMsgService {
     this.alarmMessageRepository = alarmMessageRepository;
   }
 
-  public void sendMsg(String param, String msg) throws Exception {
-    SendUrl sendUrl = sendUrlRepository.findByParam(param);
+  public void sendMsg(String oauthId, String msg) throws Exception {
+    SendUrl sendUrl = sendUrlRepository.findByOauthId(oauthId);
     LocalDateTime localDateTime = LocalDateTime.now();
     long createtime = localDateTime.toInstant(ZoneOffset.of("+8")).toEpochMilli();
-    int count = alarmMessageRepository.countAlarmMessageBySendUrlAndCreatetimeAfterAndMsg(sendUrl, createtime - 300000, msg);
+    int count = alarmMessageRepository.countAlarmMessageByOpenIdAndCreatetimeAfterAndMsg(sendUrl.getOpenId(), createtime - 300000, msg);
     if (count > 0) {
       //5 min 不发重复预警信息
       return;
     }
     AlarmMessage alarmMessage = new AlarmMessage();
     alarmMessage.setCreatetime(createtime);
-    alarmMessage.setSendUrl(sendUrl);
+    alarmMessage.setOpenId(sendUrl.getOpenId());
     alarmMessage.setMsg(msg);
     alarmMessageRepository.save(alarmMessage);
     String date = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

@@ -55,7 +55,7 @@ public class WxController {
       doGet(request, response);
     } else {
       PrintWriter out = response.getWriter();
-      String message = "OK";
+      String message = "WechatAlarm Tool";
       request.setCharacterEncoding("UTF-8");
       response.setCharacterEncoding("UTF-8");
       try {
@@ -111,14 +111,11 @@ public class WxController {
     SendUrl sendUrl = new SendUrl();
     if (optionalUser.isPresent()) {
       User user = optionalUser.get();
-      sendUrl.setUser(user);
-      sendUrl.setParam(user.getOauthId());
+      sendUrl.setOauthId(user.getOauthId());
       sendUrl.setOpenId(fromUserName);
-      sendUrl.setFlag(true);
-      sendUrl.setUrl(host + "/sendMsg/" + user.getOauthId() + "?msg=");
-      return sendUrl;
+      sendUrl.setUrl(host + "/sendMsg/" + fromUserName + "?msg=");
     }
-    return null;
+    return sendUrl;
   }
 
   private void doGet(HttpServletRequest request, HttpServletResponse response) {

@@ -5,20 +5,22 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
+ * 回复消息类，属性首字母大写转xml(或自行拼xml)
+ *
  * @author 酷酷的诚
  */
 @Getter
 @Setter
 public class WechatMessage {
 
-  private String toUserName;
+  private String ToUserName;
 
-  private String fromUserName;
+  private String FromUserName;
 
-  private String createTime;
+  private String CreateTime;
 
-  private String msgType;
+  private String MsgType;
 
-  private String content;
+  private String Content;
 
 }
