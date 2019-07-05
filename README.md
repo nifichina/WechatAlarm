@@ -11,7 +11,7 @@
 
 1：下载源码，配置application.yml，构建jar包
 
-云盘地址：链接: https://pan.baidu.com/s/1cXqC5wiYxMYQ1UGO38__lQ 提取码: bj4w 
+云盘地址：链接: https://pan.baidu.com/s/1KaOSdshl6XGSlhmYtQC0nQ 提取码: 47md 
 
 2：直接下载jar包，配置同级目录下的配置application.yml
 
